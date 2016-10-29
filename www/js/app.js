@@ -5,7 +5,7 @@
 // the 2nd parameter is an array of 'requires'
 // 'starter.services' is found in services.js
 // 'starter.controllers' is found in controllers.js
-angular.module('nicedo', ['ionic', 'nicedo.controllers', 'nicedo.services'])
+angular.module('nicedo', ['ionic', 'nicedo.controllers', 'nicedo.services', 'ngStorage'])
 
   .run(function ($ionicPlatform) {
     $ionicPlatform.ready(function () {
@@ -49,6 +49,6 @@ angular.module('nicedo', ['ionic', 'nicedo.controllers', 'nicedo.services'])
         }
       });
 
-    $urlRouterProvider.otherwise("/tab/notes");
+    $urlRouterProvider.otherwise("/tab/home");
 
   });

@@ -2,54 +2,43 @@ angular.module('nicedo.services')
 
     .service('NotesService', NotesService);
 
-function NotesService() {
+function NotesService(StorageService) {
 
-    var notesList= [];  
+     var seedDatabase = function(){
+        
+        StorageService.removeAll();
+        StorageService.add({ text:"Local Store"});
+        StorageService.add({ text: "First Note"});
+        StorageService.add({ text: "Second Note"});
 
-    getInitialNotes = function(){
-        this.notesList = [
-            { text: "First Note"},
-            { text: "Second Note"}];
-        return this.notesList;
+    };
+    //comment the below line when you need persistence
+    seedDatabase();
+
+    var getAllNotes = function(){
+        return StorageService.getAll();
     };
 
-    getAllNotes = function(){
-        return this.notesList;
-    }
-
-    addNote = function(note){
+    var addNote = function(note){
     
         if(note && note.text){
-            this.notesList.push({note});
-            //update the localstorage as well
+            StorageService.add(note);
             console.log("Note added!");
         }
     };
 
-    removeNote = function(note){
-
+    var removeNote = function(note){
+        console.log(note);
         if(note && note.text){
-            var noteIndex = this.notesList.findIndex(function(currentNote){
-                return currentNote.text === note.text;
-            });
-
-            if(noteIndex !== -1){
-                this.notesList.splice(noteIndex, 1);
-                console.log("Note removed!");
-            }else{
-                console.log("Note not found!");
-            }
+            StorageService.remove(note);
         }
     };
 
-    clearAllNotes = function(){
-        this.notesList = [];
-        //update the localstorage also
-
+    var clearAllNotes = function(){
+       StorageService.removeAll();
     };
 
     return {
-        getInitialNotes: getInitialNotes,
         getAllNotes : getAllNotes,
         addNote : addNote,
         removeNote : removeNote,

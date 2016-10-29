@@ -14,3 +14,5 @@ plugins
 *.swo
 *.log
 *.DS_Store
+
+www/lib/**

@@ -1,13 +1,13 @@
 angular.module('nicedo.controllers')
     .controller('NotesCtrl', function ($scope, NotesService) {
 
-        //$scope.message = NotesService.testMethod();
-
-        $scope.notesList = NotesService.getInitialNotes();
+        $scope.notesList = NotesService.getAllNotes();
 
         $scope.removeNote = function(note){
             NotesService.removeNote(note);
-            $scope.notesList =  NotesService.getAllNotes();
         };
 
+        $scope.addNote = function(text){
+            NotesService.addNote({text : text});
+        };
     });
