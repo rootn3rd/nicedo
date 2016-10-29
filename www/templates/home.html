@@ -1,0 +1,28 @@
+<ion-view view-title="Home">
+	<ion-content class="padding">
+		<div class="reminder-list">
+			<div class="reminder-title">Recent</div>
+			<ul class="reminder">
+				<li ng-repeat="todoItem in dataList track by $index">
+					<div class="reminder-thumb reminder-icon">
+						<!--<i class="ion-ios-chatbubble"></i>-->
+						<i class="ion-heart"></i>
+					</div>
+					<div class="reminder-item">
+						<h4 ng-bind="todoItem.title"></h4>
+						<p ng-bind="todoItem.description"></p>
+						<div class="reminder-meta-data">
+							<span><i class="ion-ios-alarm"></i> 22/01/2016 11:15PM</span>
+							<span class="pull-right"><i class="ion-ios-clock"></i> Due in 10 mins</span>
+						</div>
+					</div>
+				</li>
+			</ul>
+		</div>
+
+
+	</ion-content>
+	<p class="add-btn-circle">
+		<i class="ion-android-add" ng-click="openModal()"></i>
+	</p>
+</ion-view>

@@ -1,0 +1,25 @@
+<ion-modal-view class="product edit create">
+	<form name="itemEdit" novalidate>
+		<ion-header-bar class="bar-positive fix-buttons">
+			<a class="button" ng-click="closeModal()">Cancel</a>
+			<h1 class="title">Task Editor</h1>
+			<a class="button" ng-click="saveData()">Save</a>
+		</ion-header-bar>
+		<ion-content has-bouncing="true">
+			<div class="row" ng-class="{'no-padding-top': !data.editItem}">
+				<div class="col">
+					<label class="item item-input large">
+                    <input type="text" placeholder="Title" ng-model="item.title">
+                  </label>
+				</div>
+			</div>
+			<div class="row description-row">
+				<div class="col">
+					<label class="item item-input text">
+                    <textarea  placeholder="Description" rows="5" ng-model="item.description" ng-Required="true" name="description" lose-focus-on-return></textarea>
+                  </label>
+				</div>
+			</div>
+		</ion-content>
+	</form>
+</ion-modal-view>

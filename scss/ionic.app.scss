@@ -21,3 +21,115 @@ $ionicons-font-path: "../lib/ionic/fonts" !default;
 // Include all of Ionic
 @import "www/lib/ionic/scss/ionic";
 
+
+
+.editable-image {
+  height:200px;
+  text-align:center;
+}
+
+.add-btn-circle{
+      border-radius: 50%;
+    width: 50px;
+    height: 50px;
+    text-align: center;
+    background-color: #0099CC;
+    color: white;
+    font-weight: bold;
+    font-size: 28px;
+    padding: 12px;
+    box-shadow: 2px 2px 5px #888888;
+   cursor:pointer;
+  display: inline;
+    position: absolute;
+    bottom: 80px;
+    right: 10px;
+    /* bottom: 0; */
+    z-index: 999;
+}
+
+.delete-icon{
+      float: right;
+    margin-right: 10px;
+    margin-top: 5px;
+    color: blue;
+    cursor: pointer;
+  font-size: 20px;
+}
+
+textarea{
+  resize: none;
+}
+.reminder-list{
+  /*Optional*/
+  & > .reminder-title{
+        background: #98F5FF;
+        padding: 5px 15px;
+
+  }
+& .reminder {
+    position: relative;
+    margin: 10px 0 10px 0;
+  &:after{
+    content: '';
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    width: 3px;
+    background: #E0EEEE;
+    left: 44px;
+    margin-left: -10px;
+    z-index: 1;
+  }
+  & .reminder-item{ 
+    margin-left: 72px;
+    border-bottom: 1px solid #97FFFF;
+    padding-bottom: 5px;
+    }
+  
+  & .reminder-meta-data{
+    position: relative;
+    font-size: 12px;
+    color: #7F8C8D;
+    & > .pull-right{
+      float: right;
+    }
+    & > .pull-left{
+      float:left;
+    }
+  }
+  
+  & .reminder-thumb{
+    border-radius: 50%;
+    width: 50px;
+    z-index: 2;
+    position: absolute;
+    background: white;
+    left: 10px;
+      &.reminder-icon{
+          height: 50px;
+          text-align: center;
+          color: 	#009ACD;
+          border: 5px solid #70DBDB;
+        & i{
+          font-size: 28px;
+          margin: 6px 0;
+          display: block;
+        }
+        }
+  }
+}
+
+}
+
+.notes{
+  
+  & .note {
+      box-shadow: 0 4px 6px 0 rgba(0, 0, 0, 0.2), 0 4px 6px 0 rgba(0, 0, 0, 0.2);
+    text-align: left;
+    & .text {
+      padding : 20px 10px;
+    }
+    
+  }
+}
