@@ -6,7 +6,6 @@ angular.module('nicedo.controllers')
         $scope.notesList = NotesService.getInitialNotes();
 
         $scope.removeNote = function(note){
-
             NotesService.removeNote(note);
             $scope.notesList =  NotesService.getAllNotes();
         };
