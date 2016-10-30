@@ -15,10 +15,10 @@
 			</div>
 			<div class="row">
 				<div class="col col-50">
-					<button class="button button-full button-stable" ng-click="openDateModal()">Select date..</button>
+					<button class="button button-full button-stable" ng-bind="item.date" ng-click="openDateModal()"></button>
 				</div>
 				<div class="col col-50">
-					<button class="button button-full button-stable" ng-click="openTimeModal()">Select Time..</button>
+					<button class="button button-full button-stable" ng-bind="item.time" ng-click="openTimeModal()"></button>
 				</div>
 			</div>
 			<div class="row description-row">

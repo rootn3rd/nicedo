@@ -35,8 +35,8 @@ angular.module('nicedo', ['ionic', 'nicedo.controllers', 'nicedo.services', 'ngS
       weeksList: ["S", "M", "T", "W", "T", "F", "S"],
       monthsList: ["Jan", "Feb", "March", "April", "May", "June", "July", "Aug", "Sept", "Oct", "Nov", "Dec"],
       templateType: 'popup',
-      from: new Date(2012, 8, 1),
-      to: new Date(2018, 8, 1),
+      from: new Date(),
+      to: new Date(2020, 8, 1),
       showTodayButton: true,
       dateFormat: 'dd MMMM yyyy',
       closeOnSelect: false,
@@ -48,7 +48,7 @@ angular.module('nicedo', ['ionic', 'nicedo.controllers', 'nicedo.services', 'ngS
     var timePickerObj = {
       inputTime: (((new Date()).getHours() * 60 * 60) + ((new Date()).getMinutes() * 60)),
       format: 12,
-      step: 15,
+      step: 1,
       setLabel: 'Set',
       closeLabel: 'Close'
     };

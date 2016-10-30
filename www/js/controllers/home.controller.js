@@ -4,6 +4,8 @@ angular.module('nicedo.controllers')
 
 
         $scope.item = {};
+        $scope.item.date = 'Select date..';
+        $scope.item.time = 'Select time..';
         $scope.dataList = [];
         if (window.localStorage.getItem("toDoList")) {
             $scope.dataList = JSON.parse(window.localStorage.getItem("toDoList"));
@@ -39,23 +41,36 @@ angular.module('nicedo.controllers')
         $scope.openDateModal = function () {
             var ipObj1 = {
                 callback: function (val) {  //Mandatory
-                    console.log('Return value from the datepicker popup is : ' + val, new Date(val));
+
+                    var selectedDate = new Date(val);
+                    var displayDate = selectedDate.getDate() + "/" + (selectedDate.getMonth() + 1) + "/" + selectedDate.getFullYear();
+                    $scope.item.date = displayDate;
+                    $scope.item.actualDate = selectedDate;
                 },
+                inputDate: new Date()
             };
             ionicDatePicker.openDatePicker(ipObj1);
         }
 
         $scope.openTimeModal = function () {
+
             var ipObj1 = {
                 callback: function (val) {      //Mandatory
                     if (typeof (val) === 'undefined') {
                         console.log('Time not selected');
                     } else {
                         var selectedTime = new Date(val * 1000);
-                        console.log('Selected epoch is : ', val, 'and the time is ', selectedTime.getUTCHours(), 'H :', selectedTime.getUTCMinutes(), 'M');
+                        var hours = selectedTime.getUTCHours();
+                        hours = hours % 12;
+                        hours = hours ? hours : 12;
+                        var mins = selectedTime.getUTCMinutes() < 10 ? "0" + selectedTime.getUTCMinutes() : selectedTime.getUTCMinutes();
+                        var ampm = selectedTime.getUTCHours() >= 12 ? 'PM' : 'AM';
+                        $scope.item.time = hours + ":" + mins + " " + ampm;
+                        $scope.item.actualTime = selectedTime;
+
                     }
-                }
-                // inputTime: 50400,   //Optional
+                },
+                inputTime: (((new Date()).getHours() * 60 * 60) + ((new Date()).getMinutes() * 60))
                 // format: 12,         //Optional
                 // step: 15,           //Optional
                 // setLabel: 'Set'    //Optional
