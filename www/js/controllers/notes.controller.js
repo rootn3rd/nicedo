@@ -3,11 +3,11 @@ angular.module('nicedo.controllers')
 
         $scope.notesList = NotesService.getAllNotes();
 
-        $scope.removeNote = function(note){
+        $scope.removeNote = function (note) {
             NotesService.removeNote(note);
         };
 
-        $scope.addNote = function(text){
-            NotesService.addNote({text : text});
+        $scope.addNote = function (text) {
+            NotesService.addNote({ text: text });
         };
     });

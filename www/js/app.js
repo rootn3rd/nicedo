@@ -23,17 +23,20 @@ angular.module('nicedo', ['ionic', 'nicedo.controllers', 'nicedo.services', 'ngS
     });
   })
 
-  .config(function ($stateProvider, $urlRouterProvider) {
+  .config(function ($stateProvider, $urlRouterProvider, $ionicConfigProvider) {
+
+    $ionicConfigProvider.tabs.position('bottom'); // other values: top
+
     $stateProvider
       .state('tabs', {
         url: "/tab",
         abstract: true,
         templateUrl: "templates/tabs.html"
       })
-      .state('tabs.home', {
-        url: "/home",
+      .state('tabs.reminders', {
+        url: "/reminders",
         views: {
-          'home-tab': {
+          'reminders-tab': {
             templateUrl: "templates/home.html",
             controller: 'HomeCtrl'
           }
@@ -49,6 +52,6 @@ angular.module('nicedo', ['ionic', 'nicedo.controllers', 'nicedo.services', 'ngS
         }
       });
 
-    $urlRouterProvider.otherwise("/tab/home");
+    $urlRouterProvider.otherwise("/tab/reminders");
 
   });

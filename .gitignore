@@ -4,6 +4,7 @@
 node_modules/
 platforms/
 plugins/
+resources/
 node_modules
 .tmp
 .sass-cache
