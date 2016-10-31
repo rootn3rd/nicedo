@@ -1,5 +1,5 @@
 angular.module('nicedo.controllers')
-    .controller('HomeCtrl', function ($scope, $ionicModal, $ionicPopup, ionicDatePicker, ionicTimePicker) {
+    .controller('HomeCtrl', function ($scope, $ionicModal, $ionicPopup, ionicDatePicker, ionicTimePicker, $cordovaDatePicker, $ionicPlatform) {
         var dataList;
 
 
@@ -37,45 +37,82 @@ angular.module('nicedo.controllers')
                 $scope.modal.hide();
             });
         }
+        $ionicPlatform.ready(function () {
+            $scope.openDateModal = function () {
+                // var ipObj1 = {
+                //     callback: function (val) {  //Mandatory
 
-        $scope.openDateModal = function () {
-            var ipObj1 = {
-                callback: function (val) {  //Mandatory
+                //         var selectedDate = new Date(val);
+                //         var displayDate = selectedDate.getDate() + "/" + (selectedDate.getMonth() + 1) + "/" + selectedDate.getFullYear();
+                //         $scope.item.date = displayDate;
+                //         $scope.item.actualDate = selectedDate;
+                //     },
+                //     inputDate: new Date()
+                // };
+                // ionicDatePicker.openDatePicker(ipObj1);
+                var options = {
+                    date: new Date(),
+                    mode: 'date', // or 'time'
+                    allowOldDates: false,
+                    allowFutureDates: true,
+                    doneButtonLabel: 'Set',
+                    doneButtonColor: '#F2F3F4',
+                    cancelButtonLabel: 'Cancel',
+                    cancelButtonColor: '#000000'
+                };
 
-                    var selectedDate = new Date(val);
-                    var displayDate = selectedDate.getDate() + "/" + (selectedDate.getMonth() + 1) + "/" + selectedDate.getFullYear();
-                    $scope.item.date = displayDate;
-                    $scope.item.actualDate = selectedDate;
-                },
-                inputDate: new Date()
-            };
-            ionicDatePicker.openDatePicker(ipObj1);
-        }
+                $cordovaDatePicker.show(options).then(function (date) {
+                    $scope.item.actualDate = date;
+                    $scope.item.date = date.toLocaleDateString();
+                });
+            }
+        });
+        $ionicPlatform.ready(function () {
+            $scope.openTimeModal = function () {
 
-        $scope.openTimeModal = function () {
+                // var ipObj1 = {
+                //     callback: function (val) {      //Mandatory
+                //         if (typeof (val) === 'undefined') {
+                //             console.log('Time not selected');
+                //         } else {
+                //             var selectedTime = new Date(val * 1000);
+                //             var hours = selectedTime.getUTCHours();
+                //             hours = hours % 12;
+                //             hours = hours ? hours : 12;
+                //             var mins = selectedTime.getUTCMinutes() < 10 ? "0" + selectedTime.getUTCMinutes() : selectedTime.getUTCMinutes();
+                //             var ampm = selectedTime.getUTCHours() >= 12 ? 'PM' : 'AM';
+                //             $scope.item.time = hours + ":" + mins + " " + ampm;
+                //             $scope.item.actualTime = selectedTime;
 
-            var ipObj1 = {
-                callback: function (val) {      //Mandatory
-                    if (typeof (val) === 'undefined') {
-                        console.log('Time not selected');
-                    } else {
-                        var selectedTime = new Date(val * 1000);
-                        var hours = selectedTime.getUTCHours();
-                        hours = hours % 12;
-                        hours = hours ? hours : 12;
-                        var mins = selectedTime.getUTCMinutes() < 10 ? "0" + selectedTime.getUTCMinutes() : selectedTime.getUTCMinutes();
-                        var ampm = selectedTime.getUTCHours() >= 12 ? 'PM' : 'AM';
-                        $scope.item.time = hours + ":" + mins + " " + ampm;
-                        $scope.item.actualTime = selectedTime;
+                //         }
+                //     },
+                //     inputTime: (((new Date()).getHours() * 60 * 60) + ((new Date()).getMinutes() * 60))
+                //     // format: 12,         //Optional
+                //     // step: 15,           //Optional
+                //     // setLabel: 'Set'    //Optional
+                // };
 
-                    }
-                },
-                inputTime: (((new Date()).getHours() * 60 * 60) + ((new Date()).getMinutes() * 60))
-                // format: 12,         //Optional
-                // step: 15,           //Optional
-                // setLabel: 'Set'    //Optional
-            };
+                // ionicTimePicker.openTimePicker(ipObj1);
+                var options = {
+                    date: new Date(),
+                    mode: 'time', // or 'time'
+                    allowOldDates: false,
+                    allowFutureDates: true,
+                    doneButtonLabel: 'Set',
+                    doneButtonColor: '#F2F3F4',
+                    cancelButtonLabel: 'Cancel',
+                    cancelButtonColor: '#000000'
+                };
 
-            ionicTimePicker.openTimePicker(ipObj1);
-        }
+                $cordovaDatePicker.show(options).then(function (time) {
+                    var hours = time.getHours();
+                    hours = hours % 12;
+                    hours = hours ? hours : 12;
+                    var mins = time.getMinutes() < 10 ? "0" + time.getMinutes() : time.getMinutes();
+                    var ampm = time.getHours() >= 12 ? 'PM' : 'AM';
+                    $scope.item.time = hours + ":" + mins + " " + ampm;
+                    $scope.item.actualTime = time;
+                });
+            }
+        });
     });
