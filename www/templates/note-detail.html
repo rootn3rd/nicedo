@@ -1,0 +1,12 @@
+<ion-view view-title="{{note.title}}">
+	<ion-nav-buttons side="secondary">
+		<i ng-click="deleteNote()" class="icon ion-trash-a delete-note-icon" style="font-size : 30px;   padding: 5px;"></i>
+		<!--<button class="button" ng-click="delete()">
+        I'm a button on the primary of the navbar!
+      </button>-->
+	</ion-nav-buttons>
+	<ion-content class="padding">
+		<!---    <img ng-src="{{chat.face}}" style="width: 64px; height: 64px">-->
+		<p>{{note.description}}</p>
+	</ion-content>
+</ion-view>
