@@ -80,6 +80,15 @@ angular.module('nicedo', ['ionic', 'nicedo.controllers', 'nicedo.services', 'ngS
             controller: 'NotesCtrl'
           }
         }
+      })
+      .state('tabs.note-detail', {
+        url: "/notes/:noteId",
+        views: {
+          'notes-tab': {
+            templateUrl: "templates/note-detail.html",
+            controller: 'NoteDetailCtrl'
+          }
+        }
       });
 
     $urlRouterProvider.otherwise("/tab/reminders");

@@ -1,13 +1,21 @@
 <ion-view view-title="Notes">
 	<ion-content>
 		<ion-list>
-			<ion-item class="item-remove-animate" ng-repeat="note in notesList" type="item-text-wrap">
-				<h2>{{note.text}}</h2>
+			<ion-item class="item item-remove-animate  item-icon-right" ng-repeat="note in notesList" type="item-text-wrap" href="#/tab/notes/{{note.id}}"
+				swipe-direction="both">
+				<h2>{{note.title}}</h2>
+				<p>{{note.description}}</p>
+				<i class="icon ion-chevron-right icon-accessory"></i>
+				<ion-option-button class="button-balanced" ng-click="editNote(note)">
+					<i class="icon icon ion-edit"></i>
+				</ion-option-button>
 				<ion-option-button class="button-assertive" ng-click="removeNote(note)">
-					Delete
+					<i class="icon ion-trash-a"></i>
 				</ion-option-button>
 			</ion-item>
 		</ion-list>
-		<!--<button ng-click="addNote('Super note')">Add</button>-->
 	</ion-content>
+	<span class="add-btn-circle" ng-click="openModal()">
+		<i class="ion-android-add"></i>
+	</span>
 </ion-view>

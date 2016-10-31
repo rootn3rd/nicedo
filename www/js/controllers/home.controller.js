@@ -2,6 +2,8 @@ angular.module('nicedo.controllers')
     .controller('HomeCtrl', function ($scope, $ionicModal, $ionicPopup, ionicDatePicker, ionicTimePicker) {
         var dataList;
 
+        $scope.showTimer = true;
+        $scope.inputModalTitle = "Task Editor";
 
         $scope.item = {};
         $scope.item.date = 'Select date..';

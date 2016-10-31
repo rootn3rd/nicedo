@@ -2,7 +2,7 @@
 	<form name="itemEdit" novalidate>
 		<ion-header-bar class="bar-positive fix-buttons">
 			<a class="button" ng-click="closeModal()">Cancel</a>
-			<h1 class="title">Task Editor</h1>
+			<h1 class="title" ng-bind="inputModalTitle"></h1>
 			<a class="button" ng-click="saveData()">Save</a>
 		</ion-header-bar>
 		<ion-content has-bouncing="true">
@@ -13,7 +13,7 @@
                   </label>
 				</div>
 			</div>
-			<div class="row">
+			<div class="row" ng-if="showTimer">
 				<div class="col col-50">
 					<button class="button button-full button-stable" ng-bind="item.date" ng-click="openDateModal()"></button>
 				</div>
