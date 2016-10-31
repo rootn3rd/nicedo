@@ -109,12 +109,18 @@ textarea{
       &.reminder-icon{
           height: 50px;
           text-align: center;
-          color: 	#009ACD;
+          
           border: 5px solid #70DBDB;
         & i{
           font-size: 28px;
           margin: 6px 0;
           display: block;
+        }
+        &.upcoming{
+          color: 	#009ACD;
+        }
+        &.pending{
+          color: 	red;
         }
         }
   }

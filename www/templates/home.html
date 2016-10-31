@@ -1,10 +1,10 @@
 <ion-view view-title="Reminders">
 	<ion-content class="padding">
 		<div class="reminder-list">
-			<div class="reminder-title">Recent</div>
+			<div class="reminder-title">Upcoming</div>
 			<ul class="reminder">
-				<li ng-repeat="todoItem in dataList track by $index">
-					<div class="reminder-thumb reminder-icon">
+				<li ng-repeat="todoItem in upcomingList track by $index">
+					<div class="reminder-thumb reminder-icon upcoming">
 						<!--<i class="ion-ios-chatbubble"></i>-->
 						<i class="ion-heart"></i>
 					</div>
@@ -12,8 +12,27 @@
 						<h4 ng-bind="todoItem.title"></h4>
 						<p ng-bind="todoItem.description"></p>
 						<div class="reminder-meta-data">
-							<span><i class="ion-ios-alarm"></i> 22/01/2016 11:15PM</span>
-							<span class="pull-right"><i class="ion-ios-clock"></i> Due in 10 mins</span>
+							<span><i class="ion-ios-alarm"></i></span><span ng-bind="todoItem.date"></span>&nbsp;&nbsp;<span ng-bind="todoItem.time"></span>
+							<span class="pull-right"><i class="ion-ios-clock"></i> Due in <i ng-bind="todoItem.dueInTime"></i></span>
+						</div>
+					</div>
+				</li>
+			</ul>
+
+			<!-- Pending events -->
+			<div class="reminder-title">Pending</div>
+			<ul class="reminder">
+				<li ng-repeat="todoItem in pendingList track by $index">
+					<div class="reminder-thumb reminder-icon pending">
+						<!--<i class="ion-ios-chatbubble"></i>-->
+						<i class="ion-heart"></i>
+					</div>
+					<div class="reminder-item">
+						<h4 ng-bind="todoItem.title"></h4>
+						<p ng-bind="todoItem.description"></p>
+						<div class="reminder-meta-data">
+							<span><i class="ion-ios-alarm"></i></span><span ng-bind="todoItem.date"></span>&nbsp;&nbsp;<span ng-bind="todoItem.time"></span>
+							<span class="pull-right"><i class="ion-ios-clock"></i> Overdue by <i ng-bind="todoItem.dueInTime"></i></span>
 						</div>
 					</div>
 				</li>

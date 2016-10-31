@@ -9889,12 +9889,15 @@ textarea {
       .reminder-list .reminder .reminder-thumb.reminder-icon {
         height: 50px;
         text-align: center;
-        color: #009ACD;
         border: 5px solid #70DBDB; }
         .reminder-list .reminder .reminder-thumb.reminder-icon i {
           font-size: 28px;
           margin: 6px 0;
           display: block; }
+        .reminder-list .reminder .reminder-thumb.reminder-icon.upcoming {
+          color: #009ACD; }
+        .reminder-list .reminder .reminder-thumb.reminder-icon.pending {
+          color: red; }
 
 .notes .note {
   box-shadow: 0 4px 6px 0 rgba(0, 0, 0, 0.2), 0 4px 6px 0 rgba(0, 0, 0, 0.2);
